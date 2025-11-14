@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mb-4">All Students</h2>
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Course</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row.id }}</td>
+      <td>{{ row.name }}</td>
+      <td>{{ row.email }}</td>
+      <td>{{ row.course }}</td>
+      <td>
+        <a href="{{ url_for('update', id=row.id) }}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="{{ url_for('dele', id=row.id) }}" class="btn btn-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
